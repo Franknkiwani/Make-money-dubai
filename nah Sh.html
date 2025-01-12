@@ -1,0 +1,320 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My App</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff00cc, #00ffff);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ffcc;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #00ffcc;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://www.transparenttextures.com/patterns/black-marble.png') repeat;
+            opacity: 0.1;
+        }
+
+        .header-text {
+            font-size: 1.0rem;
+            letter-spacing: 3px;
+            margin-left: 15px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        .profile-btn {
+            background: rgba(0, 0, 0, 0.6);
+            color: #00ffcc;
+            border: 2px solid #00ffcc;
+            padding: 5px 15px;
+            font-size: 1.0em;
+            letter-spacing: 2px;
+            border-radius: 30px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            transition: 0.3s ease-in-out;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .profile-btn:hover {
+            background: #00ffcc;
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.8);
+        }
+
+        .profile-btn:focus {
+            outline: none;
+        }
+
+        /* Green balance button */
+        .balance-btn {
+            width: 100%;
+            background: #32cd32; /* Green background */
+            color: #fff; /* White text */
+            border: 2px solid #006400; /* Dark green border */
+            padding: 12px 20px;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(50, 205, 50, 0.5); /* Green shadow */
+            transition: 0.3s ease-in-out;
+            margin-top: 80px;
+        }
+
+        .balance-btn:hover {
+            background: #00b300; /* Slightly darker green on hover */
+            color: #fff;
+            box-shadow: 0 0 25px rgba(50, 205, 50, 0.8);
+        }
+
+        .balance-btn:focus {
+            outline: none;
+        }
+
+        /* New buttons for Redeem Codes and Cashout */
+        .action-btns {
+            display: flex;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .action-btn {
+            width: 50%;
+            padding: 12px;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            border: none;
+        }
+
+        .redeem-btn {
+            background: #1e90ff; /* Blue */
+            color: #fff;
+        }
+
+        .redeem-btn:hover {
+            background: #00bfff;
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+        }
+
+        .cashout-btn {
+            background: #ff4500; /* Red */
+            color: #fff;
+        }
+
+        .cashout-btn:hover {
+            background: #ff6347;
+            box-shadow: 0 0 25px rgba(255, 99, 71, 0.8);
+        }
+
+        .action-btn:focus {
+            outline: none;
+        }
+
+        /* Modern Section with Border */
+        .modern-section {
+            width: 86%;
+            max-width: 1200px;
+            padding: 100px 20px;
+            margin-top: 60px; /* Leaving space */
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffcc; /* Cyberpunk color border */
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.7);
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .modern-section h2 {
+            font-size: 2em;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        /* Glass container inside the section */
+        .glass-container {
+            width: 77%;
+            padding: 20px;
+            margin-top: -40px; /* Pulling it up to attach it */
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+            border-radius: 10px;
+            backdrop-filter: blur(10px); /* Glass effect */
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50px; /* Positioned above the section */
+        }
+
+        .changing-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #00ffcc;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+
+        /* New EARN MONEY section */
+        .earn-money {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* Full-width buttons */
+        .earn-buttons {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .earn-button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            border: none;
+        }
+
+        .earn-button.click-earn {
+            background: #32cd32; /* Green */
+            color: #fff;
+        }
+
+        .earn-button.click-earn:hover {
+            background: #00b300;
+        }
+
+        .earn-button.view-ad {
+            background: #ff4500; /* Red */
+            color: #fff;
+        }
+
+        .earn-button.view-ad:hover {
+            background: #ff6347;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="header-text">Make Money</h1>
+        <button class="profile-btn">Profile</button>
+    </header>
+
+    <button class="balance-btn">BALANCE: $0.000</button>
+
+    <!-- Action buttons for Redeem Codes and Cashout -->
+    <div class="action-btns">
+        <button class="action-btn redeem-btn">Redeem Codes</button>
+        <button class="action-btn cashout-btn">Cashout</button>
+    </div>
+
+    <!-- Modern Section with Border -->
+    <div class="modern-section">
+        <!-- Glass container positioned above the section -->
+        <div class="glass-container">
+            <div class="changing-text" id="changingText">Redeem code money$$$ to earn $1</div>
+        </div>
+
+        <!-- EARN MONEY Section -->
+        <div class="earn-money">EARN MONEY</div>
+
+        <!-- Full-width buttons for earning -->
+        <div class="earn-buttons">
+            <button class="earn-button click-earn" id="clickEarnButton">Click and earn $0.001</button>
+            <button class="earn-button view-ad" id="viewAdButton">View ad and earn $0.05</button>
+        </div>
+    </div>
+
+    <script>
+        // Changing text every second
+        const messages = [
+            "Redeem code money$$$ to earn $1",
+            "Earn real PayPal money",
+            "Get free Robux now!",
+            "Quick cashout for PayPal",
+            "Boost your earnings instantly!"
+        ];
+
+        let messageIndex = 0;
+        const changingTextElement = document.getElementById('changingText');
+
+        setInterval(() => {
+            messageIndex = (messageIndex + 1) % messages.length;
+            changingTextElement.textContent = messages[messageIndex];
+        }, 1000); // Change text every second
+
+        // Handle the click and earn button
+        document.getElementById("clickEarnButton").addEventListener("click", () => {
+            let balance = parseFloat(localStorage.getItem("balance") || "0");
+            balance += 0.001;
+            localStorage.setItem("balance", balance.toFixed(3));
+            alert("You earned $0.001! Your new balance is $" + balance.toFixed(3));
+        });
+
+        // Handle the view ad button
+        document.getElementById("viewAdButton").addEventListener("click", () => {
+            // Redirect the user to the ad
+            window.location.href = "https://poawooptugroo.com/4/7950037";
+            
+            // Store the earned balance when they come back
+            window.addEventListener("focus", () => {
+                let balance = parseFloat(localStorage.getItem("balance") || "0");
+                balance += 0.005; // Add $0.005 after returning
+                localStorage.setItem("balance", balance.toFixed(3));
+                alert("You earned $0.005! Your new balance is $" + balance.toFixed(3));
+            });
+        });
+    </script>
+</body>
+</html>
